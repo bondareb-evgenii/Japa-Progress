@@ -4,7 +4,7 @@
 //
 
 import UIKit
-import AudioToolbox
+import AVFoundation
 
 
 //TODO: implement hardware +/- buttons use!!!
@@ -32,6 +32,10 @@ import AudioToolbox
     
     readPrefs()
     updateJapaLabels()
+    
+    //listen to hardware volume buttons
+    AVAudioSession.sharedInstance().setActive(true, error: nil)
+    AVAudioSession.sharedInstance().addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.New, context: nil)
     }
   
   func readPrefs()
@@ -68,9 +72,19 @@ import AudioToolbox
   
   @IBAction func addJapaStep(sender: AnyObject)
     {
+    addJapaStep()
+    }
+    
+  func addJapaStep()
+    {
     ++japaStepCount
     updateJapaLabels()
     vibrateIfNeeded()
+    }
+    
+  override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>)
+    {
+    addJapaStep()
     }
 
   @IBAction func unwindToMainViewController(segue: UIStoryboardSegue)
