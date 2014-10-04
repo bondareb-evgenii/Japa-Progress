@@ -12,14 +12,14 @@ import AudioToolbox
 @objc(ViewController) class ViewController: UIViewController
   {
   
-  @IBOutlet var japaTargetLabel: UILabel
-  @IBOutlet var japaRoundCountLabel: UILabel
-  @IBOutlet var japaStepCountLabel: UILabel
+  @IBOutlet var japaTargetLabel: UILabel?
+  @IBOutlet var japaRoundCountLabel: UILabel?
+  @IBOutlet var japaStepCountLabel: UILabel?
   
   var japaStepCount: Int = 0
   var stepsInRound: Int = 1//taken from preferences in initializer
   
-  init(coder aDecoder: NSCoder!)
+  required init(coder aDecoder: NSCoder)
     {
     //custom initialization
       
@@ -48,9 +48,9 @@ import AudioToolbox
 
   func updateJapaLabels()
     {
-    japaTargetLabel.text = "\(stepsInRound)"
-    japaRoundCountLabel.text = "\(japaStepCount/stepsInRound)"
-    japaStepCountLabel.text = "\(japaStepCount%stepsInRound)"
+    japaTargetLabel!.text = "\(stepsInRound)"
+    japaRoundCountLabel!.text = "\(japaStepCount/stepsInRound)"
+    japaStepCountLabel!.text = "\(japaStepCount%stepsInRound)"
     }
   
   func vibrateIfNeeded()

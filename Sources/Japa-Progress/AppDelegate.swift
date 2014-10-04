@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 willFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool
   {
   let pref = NSUserDefaults.standardUserDefaults()
-  if (!pref.objectForKey(stepsInRoundPrefKey))
+  if (pref.objectForKey(stepsInRoundPrefKey) == nil)
     {
     pref.setValue(stepsInRoundDefault, forKey: stepsInRoundPrefKey)
     }

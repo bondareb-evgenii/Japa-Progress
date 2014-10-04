@@ -16,12 +16,12 @@ let stepsInRoundDefault = 108
 
 class PreferencesViewController: UIViewController
   {
-  @IBOutlet var japaTargetLabel: UILabel
-  @IBOutlet var japaTargetStepper: UIStepper
+  @IBOutlet var japaTargetLabel: UILabel?
+  @IBOutlet var japaTargetStepper: UIStepper?
   
   var stepsInRound: Int = 1//taken from preferences in initializer
   
-  init(coder aDecoder: NSCoder!)
+  required init(coder aDecoder: NSCoder)
     {
     //custom initialization
     
@@ -62,7 +62,7 @@ class PreferencesViewController: UIViewController
   
   func updateUIControls()
     {
-    japaTargetStepper.value = Double(stepsInRound)
-    japaTargetLabel.text = "\(stepsInRound)"
+    japaTargetStepper!.value = Double(stepsInRound)
+    japaTargetLabel!.text = "\(stepsInRound)"
     }
   }
