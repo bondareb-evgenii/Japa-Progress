@@ -25,6 +25,11 @@ import MediaPlayer
     super.init(coder: aDecoder)
     }
   
+  deinit
+    {
+    AVAudioSession.sharedInstance().removeObserver(self, forKeyPath: "outputVolume")
+    }
+  
   override func viewDidLoad()
     {
     super.viewDidLoad()
@@ -32,25 +37,31 @@ import MediaPlayer
     readPrefs()
     updateJapaLabels()
     
-    //listen to hardware volume buttons
-    AVAudioSession.sharedInstance().setActive(true, error: nil)
-    AVAudioSession.sharedInstance().addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.New, context: nil)
-    
-    var volumeView = MPVolumeView(frame: CGRectMake(-10, -10, 0, 0));
-    volumeView.showsRouteButton = false;
-    volumeView.hidden = false;
-    self.view.addSubview(volumeView);
-    
-    for view in volumeView.subviews
+    do
       {
-      if view.isKindOfClass(UISlider)
+      //listen to hardware volume buttons
+      try AVAudioSession.sharedInstance().setActive(true)
+      
+      AVAudioSession.sharedInstance().addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.New, context: nil)
+      
+      let volumeView = MPVolumeView(frame: CGRectMake(-10, -10, 0, 0));
+      volumeView.showsRouteButton = false;
+      volumeView.hidden = false;
+      self.view.addSubview(volumeView);
+      
+      for view in volumeView.subviews
         {
-        volumeViewSlider = view as? UISlider;
-        break;
+        if view.isKindOfClass(UISlider)
+          {
+          volumeViewSlider = view as? UISlider;
+          break;
+          }
         }
-      }
 
-    resetVolumeFromValue(1.0)//TODO: remember the original volume and set it back it when go to background; use  it or 0.00001 or 0.99999 instead of 0.5
+      resetVolumeFromValue(1.0)//TODO: remember the original volume and set it back it when go to background; use  it or 0.00001 or 0.99999 instead of 0.5
+      } catch _
+      {
+      }
     }
   
   func readPrefs()
@@ -96,15 +107,15 @@ import MediaPlayer
     updateJapaLabels()
     vibrateIfNeeded()
     }
-    
-  override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>)
+  
+  override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>)
     {
-    if resetVolumeFromValue(NSDictionary(dictionary: change).objectForKey("new")!.floatValue)
+    if resetVolumeFromValue(NSDictionary(dictionary: change!).objectForKey("new")!.floatValue)
       {
       addJapaStep()
       }
     }
-  
+
   func resetVolumeFromValue(value: Float) -> Bool
     {
     if value < 0.5 || value > 0.5
