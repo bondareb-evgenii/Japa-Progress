@@ -21,7 +21,7 @@ class PreferencesViewController: UIViewController
   
   var stepsInRound: Int = 1//taken from preferences in initializer
   
-  required init(coder aDecoder: NSCoder)
+  required init?(coder aDecoder: NSCoder)
     {
     //custom initialization
     

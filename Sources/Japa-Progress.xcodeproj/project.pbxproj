@@ -11,8 +11,8 @@
 		750337C4195DBFB800720881 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750337C3195DBFB800720881 /* ViewController.swift */; };
 		750337C7195DBFB800720881 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 750337C5195DBFB800720881 /* Main.storyboard */; };
 		750337C9195DBFB800720881 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 750337C8195DBFB800720881 /* Images.xcassets */; };
-		750337D5195DBFB800720881 /* Japa_ProgressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750337D4195DBFB800720881 /* Japa_ProgressTests.swift */; };
 		7568860E195DCAA0006428EC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7568860D195DCAA0006428EC /* PreferencesViewController.swift */; };
+		757D123B1B5010990001402B /* TemplateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 757D123A1B5010990001402B /* TemplateTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +34,9 @@
 		750337C8195DBFB800720881 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		750337CE195DBFB800720881 /* Japa-ProgressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Japa-ProgressTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		750337D3195DBFB800720881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		750337D4195DBFB800720881 /* Japa_ProgressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japa_ProgressTests.swift; sourceTree = "<group>"; };
 		7568860D195DCAA0006428EC /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		757D12391B5010990001402B /* TemplateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateTests.h; path = ../../../../Vaishnavaseva/Template/TemplateTests/TemplateTests.h; sourceTree = "<group>"; };
+		757D123A1B5010990001402B /* TemplateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateTests.m; path = ../../../../Vaishnavaseva/Template/TemplateTests/TemplateTests.m; sourceTree = "<group>"; };
 		75ADC655195DD17B0016AE08 /* ViewConroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewConroller.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,7 +101,8 @@
 		750337D1195DBFB800720881 /* Japa-ProgressTests */ = {
 			isa = PBXGroup;
 			children = (
-				750337D4195DBFB800720881 /* Japa_ProgressTests.swift */,
+				757D12391B5010990001402B /* TemplateTests.h */,
+				757D123A1B5010990001402B /* TemplateTests.m */,
 				750337D2195DBFB800720881 /* Supporting Files */,
 			);
 			path = "Japa-ProgressTests";
@@ -224,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				750337D5195DBFB800720881 /* Japa_ProgressTests.swift in Sources */,
+				757D123B1B5010990001402B /* TemplateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

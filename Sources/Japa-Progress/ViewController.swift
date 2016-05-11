@@ -18,7 +18,7 @@ import MediaPlayer
   var japaStepCount: Int = 0
   var stepsInRound: Int = 1//taken from preferences in initializer
   
-  required init(coder aDecoder: NSCoder)
+    required init?(coder aDecoder: NSCoder)
     {
     //custom initialization
       
@@ -108,7 +108,10 @@ import MediaPlayer
     vibrateIfNeeded()
     }
   
-  override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>)
+    override func observeValueForKeyPath(_ keyPath: String?,
+                                  ofObject object: AnyObject?,
+                                           change change: [String : AnyObject]?,
+                                                  context context: UnsafeMutablePointer<Void>)
     {
     if resetVolumeFromValue(NSDictionary(dictionary: change!).objectForKey("new")!.floatValue)
       {
